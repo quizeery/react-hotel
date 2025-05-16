@@ -1,0 +1,560 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: red;
+}
+
+.App {
+  text-align: center;
+  padding: 30px;
+  max-width: 900px;
+  margin: 120px auto 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #007bff;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+
+.booked {
+  background-color: #ff6b6b !important;
+  color: white !important;
+  position: relative;
+}
+
+.booked:hover {
+  background-color: #ff5252 !important;
+}
+
+.booked-by {
+  font-size: 10px;
+  position: absolute;
+  bottom: 2px;
+  left: 2px;
+  right: 2px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  padding: 1px;
+}
+
+.booking-form {
+  margin-top: 20px;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.booking-form input,
+.booking-form select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.booking-form input:focus,
+.booking-form select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+.booking-form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.booking-form button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.booking-list {
+  margin-top: 30px;
+  text-align: left;
+  border: 2px solid #007bff;
+  border-radius: 12px;
+  padding: 20px;
+  background: rgba(241, 241, 241, 0.9);
+}
+
+.booking-list li {
+  padding: 15px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ced4da;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.booking-list li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.select-container {
+  position: relative;
+}
+
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ffffff;
+  font-size: 16px;
+  color: #333;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23999" width="16" height="16"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+select:focus {
+  outline: none;
+  border-color: #0056b3;
+  box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
+}
+
+.room-selector {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.room-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.room-button {
+  position: relative;
+  width: 180px;
+  height: 100px;
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.3s ease;
+}
+
+.room-button-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 123, 255, 0.4)
+  );
+  transition: all 0.3s ease;
+}
+
+.room-button.selected .room-button-overlay {
+  background: linear-gradient(
+    rgba(0, 123, 255, 0.6),
+    rgba(0, 123, 255, 0.8)
+  );
+}
+
+.room-button-text {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.room-button:hover .room-button-overlay {
+  background: linear-gradient(
+    rgba(0, 123, 255, 0.4),
+    rgba(0, 123, 255, 0.6)
+  );
+}
+
+.room-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.room-button.selected {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+}
+
+.room-image img {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.booking-form-container {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.booking-form-container.visible {
+  max-height: 1200px;
+  opacity: 1;
+  animation: fadeIn 0.5s forwards;
+}
+
+.room-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 0 1rem;
+}
+
+.room-details {
+  width: 100%;
+}
+
+.room-images {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.room-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.room-description {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.room-description.polish {
+  margin-top: 1rem;
+  font-style: italic;
+  background-color: #f1f3f5;
+  border-left: 4px solid #007bff;
+  padding: 1rem 1.5rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  animation: slideIn 0.3s ease-out;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  border: none;
+  background: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: #dc3545;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.booking-button, .booking-form button, .delete-button, .logout-button {
+  padding: 0.6rem 1.2rem;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.booking-button {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.delete-button {
+  background: #dc3545;
+  border-radius: 4px;
+}
+
+.logout-button {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  box-shadow: 0 2px 5px rgba(220, 53, 69, 0.2);
+}
+
+.booking-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+  background: linear-gradient(135deg, #0056b3, #004494);
+}
+
+.booking-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(0, 123, 255, 0.3);
+}
+
+.booking-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.booking-button:hover .booking-icon {
+  transform: scale(1.1);
+}
+
+.date-picker-container {
+  display: flex;
+  gap: 1rem;
+  margin: 8px 0;
+}
+
+.date-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.date-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+}
+
+.bookings-list table, .admin-bookings-list table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  background: white;
+}
+
+.bookings-list th, .bookings-list td,
+.admin-bookings-list th, .admin-bookings-list td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.error-message {
+  color: #dc3545;
+  margin-bottom: 1rem;
+}
+
+.admin-nav {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 1rem 2rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: flex-end;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: fit-content;
+  min-width: 200px;
+}
+
+.admin-nav a {
+  color: #2c3e50;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+.admin-nav a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  border-radius: 25px;
+}
+
+.admin-nav a:hover {
+  color: white;
+}
+
+.admin-nav a:hover::before {
+  opacity: 1;
+}
+
+.main-header {
+  background: linear-gradient(135deg, 
+    #0056b3,
+    #007bff,
+    #0056b3,
+    #0099ff
+  );
+  margin: -30px -30px 30px -30px;
+  padding: 40px 20px;
+  border-radius: 15px 15px 0 0;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  background-size: 300% 300%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.main-header h1 {
+  color: white;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  font-size: 2.5em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header-icon {
+  font-size: 1.2em;
+  animation: float 3s ease-in-out infinite;
+}
+
+.header-title {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.header-subtitle {
+  margin: 10px 0 0;
+  font-size: 1.2em;
+  opacity: 0.9;
+  font-weight: 300;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+

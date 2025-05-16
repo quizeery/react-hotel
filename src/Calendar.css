@@ -1,0 +1,45 @@
+.react-calendar {
+    border: none; /* Убираем стандартную рамку */
+    width: 100%; /* Максимальная ширина */
+  }
+  
+  .react-calendar__tile {
+    border-radius: 10px; /* Скругленные углы */
+    transition: background-color 0.3s; /* Плавное изменение фона */
+    height: 60px !important; /* Добавляем !important для переопределения стандартных стилей */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
+  }
+  
+  .react-calendar__tile:hover {
+    background-color: #d1e7dd; /* Цвет фона при наведении */
+  }
+  
+  .react-calendar__month-view__days__day {
+    padding: 10px; /* Увеличиваем отступы */
+  }
+  
+  .react-calendar__tile.booked {
+    background-color: #dc3545; /* Красный цвет для забронированных дат */
+    color: white; /* Цвет текста */
+  }
+  
+  /* Стили для метки "Booked" */
+  .booked-by {
+    font-size: 8px;
+    position: absolute;
+    bottom: 4px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1px 0;
+  }
+
+  /* Стиль для числа в ячейке */
+  .react-calendar__tile abbr {
+    position: relative;
+    top: -5px;
+  }

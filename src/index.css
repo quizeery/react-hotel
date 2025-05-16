@@ -1,0 +1,38 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  background: url('./hotel.jpg') no-repeat center center fixed;
+  background-size: cover; 
+  font-family: 'Roboto', sans-serif; 
+}
+
+.blur {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  filter: blur(5px); 
+  z-index: 0; 
+}
+
+.container {
+  position: relative; 
+  max-width: 1200px;
+  margin: auto; 
+  padding: 30px; 
+  z-index: 1; 
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+}
+
+button {
+  border: none; 
+  border-radius: 10px; 
+}
+
+button:hover {
+  background-color: #0056b3; 
+  transition: background-color 0.3s; 
+}
