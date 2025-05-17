@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/7c1c44ad-befc-49bf-8dcd-0e1943101167)# Getting Started with Create React App
+![image](https://github.com/user-attachments/assets/c2204066-69e9-48bd-8911-20ced62a15da)![image](https://github.com/user-attachments/assets/7c1c44ad-befc-49bf-8dcd-0e1943101167)# Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -54,4 +54,11 @@ npm install
 npm start
 
 ![screens]([https://adres-do-obrazka.png](https://i.imgur.com/yEZtTKc.png))
+![image](https://github.com/user-attachments/assets/017b2486-8e9a-447b-9871-57314141152b)
+![image](https://github.com/user-attachments/assets/27d0ee17-060a-4b10-9be8-b9fb94606e02)
+![image](https://github.com/user-attachments/assets/24b299f0-7a52-4aea-8021-4978950dd6b3)
+
+
+
+
 
