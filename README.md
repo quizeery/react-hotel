@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+![image](https://github.com/user-attachments/assets/7c1c44ad-befc-49bf-8dcd-0e1943101167)# Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -52,3 +52,6 @@ Your app is ready to be deployed!
 ## How to Run Locally
 npm install
 npm start
+
+![screens]([https://adres-do-obrazka.png](https://i.imgur.com/yEZtTKc.png))
+
