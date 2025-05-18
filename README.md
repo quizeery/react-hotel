@@ -39,7 +39,7 @@ Your app is ready to be deployed!
 - MySQL / MariaDB
 - JWT (authentication)
 
-## ✨ Features
+## Features
 
 - Login system with JWT authentication (admin-only access)
 - Room booking form with dynamic room and date selection
